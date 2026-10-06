@@ -8,3 +8,8 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Application architecture
+- Keep CrowdGuard shared session state in CommandProvider and navigation in CommandShell; section routes stay independently addressable.
+- Keep demonstration fixtures and future Flask request adapters separate from UI; no frontend AI, real authentication or live backend claims.
+- Define all semantic status and surface colors in src/styles.css; monitoring overlays use percentage geometry for stable image alignment.
