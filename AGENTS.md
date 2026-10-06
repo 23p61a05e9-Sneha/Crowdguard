@@ -11,5 +11,6 @@
 
 ## Application architecture
 - Keep CrowdGuard shared session state in CommandProvider and navigation in CommandShell; section routes stay independently addressable.
+- Define CommandContext in a non-component module so preview refreshes preserve the same context identity for mounted providers and consumers.
 - Keep demonstration fixtures and future Flask request adapters separate from UI; no frontend AI, real authentication or live backend claims.
 - Define all semantic status and surface colors in src/styles.css; monitoring overlays use percentage geometry for stable image alignment.

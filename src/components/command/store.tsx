@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, type ReactNode } from 'react';
+import { useContext, useState, type ReactNode } from 'react';
 import { sampleCameras, sampleZones, sampleAlerts, type Camera, type Zone, type SafetyAlert } from '@/lib/monitoring-api';
+import { CommandContext } from './context';
 function useCommandState() {
   const [cameras, setCameras] = useState<Camera[]>(sampleCameras);
   const [zones, setZones] = useState<Zone[]>(sampleZones);
@@ -14,6 +15,6 @@ function useCommandState() {
   };
   return { cameras, setCameras, zones, setZones, alerts, updateAlert, monitoring, setMonitoring, selectedCamera, setSelectedCamera, notice, notify };
 }
-const CommandContext = createContext<ReturnType<typeof useCommandState> | null>(null);
+export type CommandState = ReturnType<typeof useCommandState>;
 export function CommandProvider({ children }: { children: ReactNode }) { const state = useCommandState(); return <CommandContext.Provider value={state}>{children}</CommandContext.Provider>; }
 export function useCommand() { const context = useContext(CommandContext); if (!context) throw new Error('CommandProvider required'); return context; }
